@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('commentaire', function (Blueprint $table) {
+            $table->id();
+             $table->string('texte');
+            $table->integer('note');
+            $table->date('date_commentaire');
+             $table->unsignedBigInteger('id_utilisateur');
+            $table->foreign('id_utilisateur')->references('id')->on('utilisateur');
+
+            $table->unsignedBigInteger('id_contenu')->nullable;
+            $table->foreign('id_contenu')->references('id')->on('contenu');
+
+
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('commentaire');
+    }
+};

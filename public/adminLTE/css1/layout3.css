@@ -1,0 +1,184 @@
+/* ------------------------------------------
+   Styles additionnels pour la page de connexion
+   Place ce code à la fin de resources/css/app.css
+   ------------------------------------------ */
+
+/* Variables couleurs */
+:root{
+  --bg: #f3f4f6;         /* gris clair */
+  --card-bg: #ffffff;    /* carte */
+  --muted: #6b7280;      /* texte secondaire */
+  --accent: #1f2937;     /* titre / accent */
+  --primary: #2563eb;    /* bleu principal */
+  --success: #16a34a;
+  --danger: #dc2626;
+  --border: #e5e7eb;
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --glass: rgba(255,255,255,0.6);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0b1220;
+    --card-bg: rgba(17,24,39,0.9);
+    --muted: #9ca3af;
+    --accent: #e6eef8;
+    --primary: #60a5fa;
+    --border: rgba(255,255,255,0.06);
+    --shadow: 0 8px 24px rgba(2,6,23,0.6);
+    --glass: rgba(255,255,255,0.04);
+  }
+}
+
+/* Page container (fallback si tu n'utilises pas tailwind pour le body) */
+body {
+  background: var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+               Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--accent);
+  margin: 0;
+  padding: 0;
+}
+
+/* Carte de connexion */
+.login-card, .card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 14px;
+  padding: 1.75rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Titre / Sous-texte */
+.login-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.login-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.login-header p {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Formulaire */
+.form-group { margin-bottom: 0.9rem; display:block; }
+label {
+  display:block;
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+/* Inputs généraux (compatible tailwind + non-tailwind) */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: inherit;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 0.98rem;
+  transition: box-shadow .15s ease, border-color .12s ease, transform .06s ease;
+}
+
+/* focus */
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 6px 18px rgba(37,99,235,0.12);
+  transform: translateY(-1px);
+}
+
+/* Boutons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: transform .08s ease, box-shadow .12s ease, opacity .08s ease;
+}
+.btn-primary {
+  background: linear-gradient(180deg,var(--primary), #1d4ed8);
+  color: white;
+  box-shadow: 0 8px 18px rgba(37,99,235,0.18);
+}
+.btn-primary:active { transform: translateY(1px); }
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+/* Petit texte / liens */
+.form-help {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Row pour actions (ex : remember + forgot) */
+.form-row {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 0.5rem;
+  margin-top: 0.45rem;
+}
+
+/* Checkbox style léger */
+.checkbox {
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  color: var(--muted);
+}
+.checkbox input { width: 16px; height: 16px; }
+
+/* Erreur / Succès */
+.input-error { border-color: var(--danger) !important; box-shadow: 0 6px 18px rgba(220,38,38,0.08); }
+.text-error { color: var(--danger); font-size:0.875rem; margin-top: 0.35rem; }
+.text-success { color: var(--success); font-size:0.875rem; margin-top: 0.35rem; }
+
+/* Responsive small screens */
+@media (max-width: 640px){
+  .login-card { padding: 1.25rem; border-radius: 12px; }
+  .login-header h1 { font-size: 1.25rem; }
+}
+
+/* Petite animation d'apparition */
+.fade-in {
+  animation: fadeInUp .5s ease both;
+}
+@keyframes fadeInUp {
+  from { opacity:0; transform: translateY(10px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+/* UTILITAIRES si tu n'as pas Tailwind (optionnel) */
+.text-center { text-align:center; }
+.mt-4 { margin-top:1rem; }
+.mb-6 { margin-bottom:1.5rem; }
