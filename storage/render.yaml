@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: laravel-app
+    runtime: php
+    buildCommand: chmod +x public/render-build.sh && ./public/render-build.sh
+    startCommand: php artisan serve --host=0.0.0.0 --port=${PORT}
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        sync: false
+      - key: LOG_CHANNEL
+        value: stderr
+    autoDeploy: true

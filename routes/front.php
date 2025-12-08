@@ -24,7 +24,7 @@ Route::get('/inscription', [InscriptionsController::class, 'showRegisterForm'])
 Route::post('/inscription', [InscriptionsController::class, 'register'])
     ->name('front.inscription.store');
 
-Route::get('/front', [InscriptionsController::class, 'index'])
+Route::get('/', [InscriptionsController::class, 'index'])
     ->name('front.front');
 
 Route::post('/inscrit', [InscriptionsController::class, 'inscrits'])
